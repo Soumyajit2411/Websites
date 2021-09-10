@@ -105,7 +105,7 @@ if ( ! function_exists( 'oceanwp_search_shortcode' ) ) {
 
 	function oceanwp_search_shortcode( $atts ) {
 
-		// Extract attributes
+		// Extract attributes.
 		extract( shortcode_atts( array(
 			'width' 		=> '',
 			'height' 		=> '',
@@ -114,7 +114,7 @@ if ( ! function_exists( 'oceanwp_search_shortcode' ) ) {
 			'post_type' 	=> 'any',
 		), $atts ) );
 
-		// Styles
+		// Styles.
 		$style = array();
 		if ( ! empty( $width ) ) {
 			$style[] = 'width: '. intval( $width ) .'px;';
@@ -129,15 +129,15 @@ if ( ! function_exists( 'oceanwp_search_shortcode' ) ) {
 			$style = ' style="' . esc_attr( $style) . '"';
 		}
 
-		$html = '<form method="get" class="oceanwp-searchform" id="searchform" action="'. esc_url( home_url( '/' ) ) .'"'. $style .'>';
-			$html .= '<input type="text" class="field" name="s" id="s" placeholder="'. strip_tags( $placeholder ) .'">';
+		$html = '<form aria-label="'. oe_lang_strings( 'oe-string-search-form-label', false ) .'" role="search" method="get" class="oceanwp-searchform" id="searchform" action="'. esc_url( home_url( '/' ) ) .'"'. $style .'>';
+			$html .= '<input aria-label="'. oe_lang_strings( 'oe-string-search-field', false ) .'" type="text" class="field" name="s" id="s" placeholder="'. strip_tags( $placeholder ) .'">';
 			if ( 'any' != $post_type ) {
 				$html .= '<input type="hidden" name="post_type" value="'.esc_attr( $post_type ) .'">';
 			}
-			$html .= '<button type="submit" class="search-submit" value=""><i class="'. esc_attr( $btn_icon ) .'"></i></button>';
+			$html .= '<button aria-label="'. oe_lang_strings( 'oe_string_search_submit', false ) .'" type="submit" class="search-submit" value=""><i class="'. esc_attr( $btn_icon ) .'" aria-hidden="true"></i></button>';
 		$html .= '</form>';
 
-		// Return
+		// Return.
 		return $html;
 
 	}
@@ -211,12 +211,12 @@ if ( ! function_exists( 'oceanwp_login_shortcode' ) ) {
 
 		// Logged in link.
 		if ( is_user_logged_in() ) {
-			return '<a href="'. esc_url( $logout_url ) .'" title="'. esc_attr( $logout_text ) .'" class="oceanwp-logout">'. strip_tags( $logout_text ) .'</a>';
+			return '<a href="'. esc_url( $logout_url ) .'" class="oceanwp-logout">'. strip_tags( $logout_text ) .'</a>';
 		}
 
 		// Logged out link.
 		else {
-			return '<a href="'. esc_url( $login_url ) .'" title="'. esc_attr( $login_text ) .'" class="oceanwp-login" target="_'. esc_attr( $target ) .'">'. strip_tags( $login_text ) .'</a>';
+			return '<a href="'. esc_url( $login_url ) .'" class="oceanwp-login" target="_'. esc_attr( $target ) .'">'. strip_tags( $login_text ) .'</a>';
 		}
 
 	}
@@ -732,13 +732,13 @@ add_shortcode( 'oceanwp_breadcrumb', 'oceanwp_breadcrumb_shortcode' );
 
 /**
  * Last Modified Date Shortcode
- * 
+ *
  * @since 1.7.1
  */
 if ( ! function_exists( 'oceanwp_last_modified_shortcode' ) ) {
 	function oceanwp_last_modified_shortcode( $atts ) {
 
-		// Attrbibutes. 
+		// Attrbibutes.
 		extract( shortcode_atts( array(
 			'olm_text'          => esc_html__( 'Last Updated on:', 'ocean-extra' ),
 			'olm_date_format'   => '',
@@ -757,3 +757,39 @@ if ( ! function_exists( 'oceanwp_last_modified_shortcode' ) ) {
 	}
 }
 add_shortcode( 'oceanwp_last_modified', 'oceanwp_last_modified_shortcode' );
+
+/**
+ * SVG icon shortcode
+ *
+ * @param array $atts    An associative array of attributes.
+ * @param obj   $content The enclosed content.
+ *
+ * @since 1.7.6
+ */
+if ( ! function_exists( 'oceanwp_svg_icon_shortcode' ) ) {
+
+	function oceanwp_svg_icon_shortcode( $atts, $content = null ) {
+
+		$owp_icon = '';
+
+		// Extract attributes.
+		$attr = shortcode_atts(
+			array(
+				'icon'        => 'Add an icon class',
+				'class'       => '',
+				'title'       => '',
+				'desc'        => '',
+				'area_hidden' => true,
+				'fallback'    => false,
+			),
+			$atts
+		);
+
+		if ( function_exists( 'ocean_svg' ) ) {
+			$owp_icon = ocean_svg( $attr['icon'], false, $attr['class'], $attr['title'], $attr['desc'], $attr['area_hidden'], $attr['fallback'] );
+		}
+
+		return $owp_icon;
+	}
+}
+add_shortcode( 'oceanwp_icon', 'oceanwp_svg_icon_shortcode' );

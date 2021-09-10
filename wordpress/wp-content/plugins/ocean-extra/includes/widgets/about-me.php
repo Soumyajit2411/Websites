@@ -29,10 +29,6 @@ if ( ! class_exists( 'Ocean_Extra_About_Me_Widget' ) ) {
 						'name'      => 'Facebook',
 						'url'       => ''
 					),
-					'google-plus'   => array(
-						'name'      => 'GooglePlus',
-						'url'       => ''
-					),
 					'instagram'     => array(
 						'name'      => 'Instagram',
 						'url'       => ''
@@ -49,8 +45,68 @@ if ( ! class_exists( 'Ocean_Extra_About_Me_Widget' ) ) {
 						'name'      => 'Twitter',
 						'url'       => ''
 					),
-					'youtube'       => array(
-						'name'      => 'Youtube',
+					'telegram'       => array(
+						'name'      => 'Telegram',
+						'url'       => ''
+					),
+					'twitch'       => array(
+						'name'      => 'Twitch',
+						'url'       => ''
+					),
+					'line'       => array(
+						'name'      => 'Line',
+						'url'       => ''
+					),
+					'xing'       => array(
+						'name'      => 'Xing',
+						'url'       => ''
+					),
+					'vine'       => array(
+						'name'      => 'Vine',
+						'url'       => ''
+					),
+					'vimeo'       => array(
+						'name'      => 'Vimeo',
+						'url'       => ''
+					),
+					'github'       => array(
+						'name'      => 'Github',
+						'url'       => ''
+					),
+					'flickr'       => array(
+						'name'      => 'Flickr',
+						'url'       => ''
+					),
+					'yelp'       => array(
+						'name'      => 'Yelp',
+						'url'       => ''
+					),
+					'tripadvisor'       => array(
+						'name'      => 'Tripadvisor',
+						'url'       => ''
+					),
+					'rss'       => array(
+						'name'      => 'RSS',
+						'url'       => ''
+					),
+					'medium'       => array(
+						'name'      => 'Medium',
+						'url'       => ''
+					),
+					'tiktok'       => array(
+						'name'      => 'tiktok',
+						'url'       => ''
+					),
+					'vk'       => array(
+						'name'      => 'VK',
+						'url'       => ''
+					),
+					'dribbble'       => array(
+						'name'      => 'Dribbble',
+						'url'       => ''
+					),
+					'tumblr'       => array(
+						'name'      => 'Tumblr',
 						'url'       => ''
 					),
 				)
@@ -247,8 +303,8 @@ if ( ! class_exists( 'Ocean_Extra_About_Me_Widget' ) ) {
 								// Display social links.
 								if ( $link ) {
 									$icon = 'youtube' == $key ? 'youtube' : $key;
-									$icon = 'pinterest' == $key ? 'pinterest-p' : $icon;
-									echo '<li class="'. esc_attr( $key ) .'"><a href="'. esc_url( $link ) .'" '. $aria_label .'  target="_'. esc_attr( $target ) .'" '. $link_rel .'><i class="fab fa-'. esc_attr( $icon ) .'" aria-hidden="true"></i></a>';
+									$icon = 'pinterest' == $key ? 'pinterest' : $icon;
+									echo '<li class="'. esc_attr( $key ) .'"><a href="'. esc_url( $link ) .'" '. $aria_label .'  target="_'. esc_attr( $target ) .'" '. $link_rel .'>' . Ocean_Extra::oe_svg_icon( $icon, false ) . '</a>';
 										echo $ocean_sr;
 									echo '</li>';
 								}
