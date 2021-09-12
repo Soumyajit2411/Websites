@@ -24,6 +24,10 @@ class ScrollEffect {
     #onScrollItemClick = (event) => {
         const scrollItem = event.currentTarget;
 
+        if (scrollItem.classList.contains("elementor-item-anchor") && scrollItem.classList.contains("has-submenu")) {
+            return;
+        }
+
         if (
             !scrollItem.classList.contains("omw-open-modal") &&
             !scrollItem.closest(".omw-open-modal") &&
@@ -49,12 +53,13 @@ class ScrollEffect {
                     this.#getTopbarHeight() -
                     this.#getStickyHeaderHeight();
 
-                DOM.html.scrollTo({
-                    top: scrollPosition,
-                    behavior: "smooth",
-                });
-
                 if (
+                    !document.querySelector("#site-header-sticky-wrapper")?.classList.contains("is-sticky") &&
+                    (!!document.querySelector("#site-header-sticky-wrapper") ||
+                        !!document.querySelector("#stick-anything-header") ||
+                        !!document
+                            .querySelector(".elementor-section-wrap")
+                            ?.firstElementChild.classList.contains("elementor-sticky")) &&
                     !!DOM.header.site &&
                     !DOM.header.site.classList.contains("top-header") &&
                     !DOM.header.site.classList.contains("medium-header") &&
@@ -62,6 +67,11 @@ class ScrollEffect {
                 ) {
                     window.addEventListener("scroll", this.#fixMultiMenu);
                 }
+
+                DOM.html.scrollTo({
+                    top: scrollPosition,
+                    behavior: "smooth",
+                });
             }
         }
     };
@@ -73,10 +83,14 @@ class ScrollEffect {
             ? DOM.header.topbarWrapper.offsetHeight
             : 0;
 
-    #getStickyHeaderHeight = () => {
+    #getStickyHeaderHeight = (startPosition = false) => {
         const stickyHeader = document.querySelector("#site-header-sticky-wrapper");
 
         if (!!stickyHeader) {
+            if (stickyHeader.classList.contains("is-sticky") && !startPosition) {
+                return DOM.header.site.offsetHeight;
+            }
+
             if (DOM.header.site?.classList.contains("top-header")) {
                 return Number.parseInt(getComputedStyle(stickyHeader).height);
             }
@@ -126,12 +140,12 @@ class ScrollEffect {
             offset(this.#targetElem).top -
             this.#getAdminBarHeight() -
             this.#getTopbarHeight() -
-            this.#getStickyHeaderHeight();
+            this.#getStickyHeaderHeight(true);
 
         if (window.pageYOffset.toFixed() === fixedOffset.toFixed()) {
             window.removeEventListener("scroll", this.#fixMultiMenu);
 
-            if (DOM.header.site?.offsetHeight - 1 > this.#getStickyHeaderHeight()) {
+            if (DOM.header.site?.offsetHeight - 1 > this.#getStickyHeaderHeight(true)) {
                 const scrollPosition =
                     offset(this.#targetElem).top -
                     this.#getAdminBarHeight() -

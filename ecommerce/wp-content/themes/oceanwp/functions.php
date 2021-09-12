@@ -441,7 +441,7 @@ final class OCEANWP_Theme_Class {
 		wp_register_style( 'oceanwp-hamburgers', $dir . 'third/hamburgers/hamburgers.min.css', false, $theme_version );
 
 		// Register perfect-scrollbar plugin style.
-		wp_register_style( 'perfect-scrollbar', $dir . 'third/perfect-scrollbar.css', false, '1.5.0' );
+		wp_register_style( 'ow-perfect-scrollbar', $dir . 'third/perfect-scrollbar.css', false, '1.5.0' );
 
 		// Register hamburgers buttons styles.
 		$hamburgers = oceanwp_hamburgers_styles();
@@ -462,7 +462,7 @@ final class OCEANWP_Theme_Class {
 		if ( 'vertical' === oceanwp_header_style() ) {
 			wp_enqueue_style( 'oceanwp-hamburgers' );
 			wp_enqueue_style( 'oceanwp-spin' );
-			wp_enqueue_style( 'perfect-scrollbar' );
+			wp_enqueue_style( 'ow-perfect-scrollbar' );
 		}
 
 	}
@@ -487,6 +487,9 @@ final class OCEANWP_Theme_Class {
 		// Get localized array.
 		$localize_array = self::localize_array();
 
+		// Main script dependencies
+		$mainScriptDependencies = array( 'jquery' );
+
 		// Comment reply.
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -499,39 +502,42 @@ final class OCEANWP_Theme_Class {
 		 * Load Venors Scripts.
 		 */
 
+		// Isotop
+		wp_enqueue_script( 'ow-isotop', $dir . 'vendors/isotope.pkgd.min.js', array(), '3.0.6', true );
+
 		// Flickity.
-		wp_enqueue_script( 'isotop', $dir . 'vendors/isotope.pkgd.min.js', array(), $theme_version, true );
-		wp_enqueue_script( 'flickity', $dir . 'vendors/flickity.pkgd.min.js', array(), $theme_version, true );
+		wp_enqueue_script( 'ow-flickity', $dir . 'vendors/flickity.pkgd.min.js', array(), $theme_version, true );
 
 		// Lightbox.
 		if ( ! get_theme_mod( 'ocean_disable_lightbox', false ) ) {
-			wp_enqueue_script( 'magnific-popup', $dir . 'vendors/magnific-popup.min.js', array(), $theme_version, true );
+			wp_register_script( 'ow-magnific-popup', $dir . 'vendors/magnific-popup.min.js', array( 'jquery' ), $theme_version, true );
+			array_push( $mainScriptDependencies, 'ow-magnific-popup' );
 		}
 
 		// Sidr Mobile Menu.
-		wp_enqueue_script( 'sidr', $dir . 'vendors/sidr.js', array(), $theme_version, true );
+		wp_enqueue_script( 'ow-sidr', $dir . 'vendors/sidr.js', array(), $theme_version, true );
 
 		// Perfect Scrollbar.
-		wp_register_script( 'perfect-scrollbar', $dir . 'vendors/perfect-scrollbar.min.js', array(), $theme_version, true );
+		wp_register_script( 'ow-perfect-scrollbar', $dir . 'vendors/perfect-scrollbar.min.js', array(), $theme_version, true );
 		if ( 'vertical' === oceanwp_header_style() ) {
-			wp_enqueue_script( 'perfect-scrollbar' );
+			wp_enqueue_script( 'ow-perfect-scrollbar' );
 		}
 
 		// Smooth Scroll.
-		wp_enqueue_script( 'smoothscroll', $dir . 'vendors/smoothscroll.min.js', array(), $theme_version, false );
+		wp_enqueue_script( 'ow-smoothscroll', $dir . 'vendors/smoothscroll.min.js', array(), $theme_version, false );
 
 		/**
 		 * Load Theme Scripts.
 		 */
 
 		// Main script.
-		wp_enqueue_script( 'oceanwp-main', $dir . 'theme.vanilla.min.js', array(), $theme_version, true );
+		wp_enqueue_script( 'oceanwp-main', $dir . 'theme.vanilla.min.js', $mainScriptDependencies, $theme_version, true );
 		wp_localize_script( 'oceanwp-main', 'oceanwpLocalize', $localize_array );
 
 		// WooCommerce scripts.
 		if ( OCEANWP_WOOCOMMERCE_ACTIVE
 		&& 'yes' !== get_theme_mod( 'ocean_woo_remove_custom_features', 'no' ) ) {
-			wp_enqueue_script( 'oceanwp-woocommerce-custom-features', $dir . 'wp-plugins/woocommerce/woo-custom-features.min.js', array(), $theme_version, true );
+			wp_enqueue_script( 'oceanwp-woocommerce-custom-features', $dir . 'wp-plugins/woocommerce/woo-custom-features.min.js', array( 'jquery' ), $theme_version, true );
 			wp_localize_script( 'oceanwp-woocommerce-custom-features', 'oceanwpLocalize', $localize_array );
 		}
 
@@ -890,7 +896,7 @@ final class OCEANWP_Theme_Class {
 	 */
 	public static function wp_list_categories_args( $links ) {
 		$links = str_replace( '</a> (', '</a> <span class="cat-count-span">(', $links );
-		$links = str_replace( ' )', ' )</span>', $links );
+		$links = str_replace( ')', ')</span>', $links );
 		return $links;
 	}
 
