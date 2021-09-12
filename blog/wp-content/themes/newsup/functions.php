@@ -17,7 +17,7 @@
 	$newsup_theme_start = wp_get_theme();
 	if (( 'Newsup' == $newsup_theme_start->name) || ( 'Newsberg' == $newsup_theme_start->name) || ( 'Newsbulk' == $newsup_theme_start->name) || 
 		( 'Newslay' == $newsup_theme_start->name) || ( 'Foodup' == $newsup_theme_start->name) || ( 'News Live' == $newsup_theme_start->name) || 
-		( 'Mag Dark' == $newsup_theme_start->name) || ( 'News Talk' == $newsup_theme_start->name))  {
+		( 'Mag Dark' == $newsup_theme_start->name) || ( 'News Talk' == $newsup_theme_start->name) || ( 'News Way' == $newsup_theme_start->name))  {
 	if ( is_admin() ) {
 		require ($newsup_theme_path . '/admin/getting-started.php');
 	}

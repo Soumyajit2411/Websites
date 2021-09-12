@@ -127,13 +127,17 @@ if ( ! class_exists( 'Ocean_Extra_Facebook_Widget' ) ) {
 
 			$instance['title'] = trim( strip_tags( stripslashes( $new_instance['title'] ) ) );
 
+			if( isset( $new_instance['like_args'] ) && ! empty( $new_instance['like_args'] ) ) {
+				return $new_instance;
+			}
+
 			// Set up widget values
 			$instance['like_args'] = array(
 				'href'        => trim( strip_tags( stripslashes( $new_instance['href'] ) ) ),
 				'width'       => (int) $new_instance['width'],
 				'height'      => (int) $new_instance['height'],
 				'colorscheme' => $new_instance['colorscheme'],
-				'show_faces'  => (bool) $new_instance['show_faces'],
+				'show_faces'  => isset ( $new_instance['show_faces'] ) ? (bool) $new_instance['show_faces'] : false,
 				'stream'      => (bool) $new_instance['stream'],
 				'show_border' => (bool) $new_instance['show_border'],
 				'header'      => false, // The header just displays "Find us on Facebook"; it's redundant with the title

@@ -4,7 +4,7 @@ Theme URI: https://themeansar.com/free-themes/newsup/
 Author: Themeansar
 Author URI: https://themeansar.com
 Description: Newsup is a fast, clean, modern-looking Best Responsive News Magazine WordPress theme. The theme is fully widgetized, so users can manage the content by using easy to use widgets. Newsup is suitable for dynamic news, newspapers, magazine, publishers, blogs, editors, online and gaming magazines, newsportals,personal blogs, newspaper, publishing or review siteand any creative website. Newsup is SEO friendly, WPML,Gutenberg, translation and RTL ready. Live preview : https://demo.themeansar.com/newsup and documentation at https://docs.themeansar.com/docs/newsup/
-Version: 2.9.9.77
+Version: 2.9.9.79
 Tested up to: 5.7
 Requires PHP: 5.6
 Tags: one-column, two-columns ,right-sidebar, flexible-header, custom-background, custom-header, custom-menu, editor-style, featured-images, footer-widgets,  theme-options, threaded-comments, rtl-language-support, translation-ready, full-width-template, custom-logo, blog, news
@@ -334,7 +334,7 @@ select {
  padding-right: 0;
  padding-left: 0;
 }
-input:not([type]), input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="url"], input[type="text"],textarea {
+input:not([type]), input[type="email"], input[type="number"], input[type="password"], input[type="tel"], input[type="url"], input[type="text"], input[type="search"], textarea {
 	border-radius: 0;
     margin-bottom: 20px;
     box-shadow: inherit;
@@ -2782,6 +2782,16 @@ footer .mg-widget .woocommerce ul.cart_list li img, footer .mg-widget .woocommer
     width: 200px;
     min-width: 200px;
 }
+
+/*woocommerce-sidebar*/
+
+.woocommerce .star-rating {
+    color: #ff9919;
+}
+
+.woocommerce.widget_product_search .woocommerce-product-search input[type="search"] {
+    margin-bottom: 20px;
+}
 /* --------------------------------------
 =========================================
 	9.mg-Responsive part
@@ -3167,4 +3177,11 @@ div.wpforms-container-full .wpforms-form button[type=submit]
 	border: 1px solid #ddd;
     font-size: 1em;
     padding: 5px 20px;
+}
+
+@media (max-width: 767.98px) {
+.wp-block-embed iframe {
+max-width: 100%;
+height: auto;
+}
 }
