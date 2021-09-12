@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Aparments &#8211; HOUSED RALLIED</title>
+	<atom:link href="https://soumyajit2411.github.io/Websites/estate_static/property_category/aparments/feed/" rel="self" type="application/rss+xml" />
+	<link>https://soumyajit2411.github.io/Websites/estate_static</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 09 Sep 2021 20:36:17 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.1</generator>
+	<item>
+		<title>Burj Khalifa Tower</title>
+		<link>https://soumyajit2411.github.io/Websites/estate_static/property/soumyajit-roy/</link>
+		
+		<dc:creator><![CDATA[estate]]></dc:creator>
+		<pubDate>Mon, 06 Sep 2021 16:38:00 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://soumyajit2411.github.io/Websites/estate_static/?post_type=property&#038;p=7</guid>
+
+					<description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida scelerisque nulla ut bibendum. Nam turpis nisl, gravida at ligula eu, porttitor consectetur urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum consectetur orci sed vehicula. Proin tincidunt purus ac aliquam interdum. Quisque lacinia mi justo, sed auctor orci congue id. Mauris nec [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida scelerisque nulla ut bibendum. Nam turpis nisl, gravida at ligula eu, porttitor consectetur urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum consectetur orci sed vehicula. Proin tincidunt purus ac aliquam interdum. Quisque lacinia mi justo, sed auctor orci congue id. Mauris nec leo tincidunt orci blandit ullamcorper ac id massa. Cras commodo erat nec accumsan convallis. Quisque vulputate diam vel neque facilisis sagittis sed et neque. Duis luctus risus sit amet quam sodales, sit amet sagittis massa ultricies. Vestibulum magna nisl, dapibus quis tempor sit amet, tincidunt nec sapien. Nunc ante tortor, pellentesque eu ligula eu, tristique ullamcorper dui. Nam semper neque nec consequat luctus.</p>
+<p>
+
+</p>
+<p>Quisque luctus ac metus nec viverra. Pellentesque sollicitudin orci at leo eleifend, et blandit mi vehicula. Curabitur sit amet est vel nunc sollicitudin ultrices a ut ante. Sed nisi ipsum, aliquam euismod tristique in, tristique id elit. Donec ut elit sem. Pellentesque iaculis id lectus eu commodo. Aenean semper rutrum finibus. Phasellus ipsum metus, feugiat sit amet posuere et, mattis et turpis. Nam rutrum neque in placerat molestie.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>
